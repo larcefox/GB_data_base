@@ -1062,16 +1062,6 @@ CREATE TRIGGER `t_update_acc_reg_after_insert` AFTER INSERT ON Intelligent_Finan
 
 END//
 
-
-//
-CREATE TRIGGER `t_update_rem_reg_after_insert` AFTER INSERT ON Intelligent_Finance.account_registr
- 	FOR EACH ROW 
-	BEGIN	
-		
-		UPDATE remains_registr
-			SET -- TODO Доделать обновление остатков
-
-END//
 DELIMITER ;
 
 
@@ -1080,7 +1070,7 @@ INSERT INTO `user_documents` VALUES
 ('227','2','2','2.00','9','2000-09-08 16:14:21','x9a42111553337811a12088f5','2','2','2',NULL,'1988-04-15 08:12:00','2017-06-13 14:11:02','0')
 ;
 
-
+CALL Intelligent_Finance.sp_rem_reg_first_fill();
 
 
 
