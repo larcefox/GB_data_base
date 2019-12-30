@@ -1,5 +1,18 @@
 /* Курсовая работа. Субботин Андрей.
-	Описание
+	Курсовая работа по теме "Учетная система"
+	Созданы таблицы:
+		1. users - пользователи;
+		2. profiles -профили пользователей;
+		3. contractor - контрагенты;
+		4. organisation - организации;
+		5. document_type - типы документов;
+		6. user_documents - пользовательские документы;
+		7. user_forms - типы визуальных форм документов;
+		8. user_form_elements - типы элементов управления;
+		9. user_form_elements таюлица сопоставления форм и элементов;
+		10.info_registr - регистр данных;
+		11.account_registr - регистр накопления;
+		12.remains_registr - регистр остатков.
 */
 
 -- скрипты создания структуры БД
@@ -1045,8 +1058,10 @@ DELIMITER ;
 CALL Intelligent_Finance.sp_reg_first_fill();
 CALL Intelligent_Finance.sp_rem_reg_first_fill();
 
+
+
+  -- Триггер для обновления регистра накопления после добавления документов
 DROP TRIGGER IF EXISTS Intelligent_Finance.t_update_acc_reg_after_insert;
-DROP TRIGGER IF EXISTS Intelligent_Finance.t_update_rem_reg_after_insert;
 
 DELIMITER //
 //
@@ -1069,7 +1084,7 @@ INSERT INTO `user_documents` VALUES
 ('226','1','1','1.00','9','1985-05-17 10:46:25','x48e226222227811150420ba7','1','1','1',NULL,'1978-01-13 07:00:42','2008-09-22 16:51:02','0'),
 ('227','2','2','2.00','9','2000-09-08 16:14:21','x9a42111553337811a12088f5','2','2','2',NULL,'1988-04-15 08:12:00','2017-06-13 14:11:02','0')
 ;
-
+  -- Не смог создать триггер, приходится целиком перезаписывать регистр
 CALL Intelligent_Finance.sp_rem_reg_first_fill();
 
 
